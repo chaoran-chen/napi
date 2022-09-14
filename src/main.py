@@ -1,11 +1,12 @@
+import argparse
 import yaml
 from flask import Flask, request
 
 from entities import Message, SlackTarget, ProgramConfig, Channel
 
 
-def read_config() -> ProgramConfig:
-    with open('../config.yml', 'r') as f:
+def read_config(path: str) -> ProgramConfig:
+    with open(path, 'r') as f:
         config = yaml.safe_load(f)
 
     # Auth keys
@@ -34,7 +35,12 @@ def read_config() -> ProgramConfig:
 
 
 if __name__ == '__main__':
-    program_config = read_config()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('config_file', help='path to config.yml')
+    args = parser.parse_args()
+    print('Config file: {}'.format(args.config_file))
+
+    program_config = read_config(args.config_file)
     app = Flask(__name__)
 
 
