@@ -1,6 +1,6 @@
 import argparse
 import yaml
-from flask import Flask, request
+from flask import Flask, request, abort
 
 from entities import Message, SlackTarget, ProgramConfig, Channel
 
@@ -46,6 +46,13 @@ if __name__ == '__main__':
 
     @app.route('/send', methods=['POST'])
     def send():
+        # Validate authentication key
+        auth_key = request.json.get('auth_key')
+        if auth_key not in program_config.auth_keys:
+            abort(401)
+            return
+
+        # Send message
         channel = request.json.get('channel')
         message = Message(
             request.json.get('level', 'INFO'),

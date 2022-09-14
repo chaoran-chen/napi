@@ -18,6 +18,7 @@ To send a notification, send a POST request to `/send` with a JSON body in the f
 
 ```json
 {
+    "auth_key": "<auth key>",
     "channel": "<channel name>",
     "level": "<INFO, WARNING or ERROR>",
     "subject": "<subject>",
