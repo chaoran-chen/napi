@@ -1,0 +1,9 @@
+# Editors
+.idea
+
+# Python
+/venv
+__pycache__
+
+# Application
+config.yml

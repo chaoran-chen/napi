@@ -1,0 +1,13 @@
+
+auth_keys:
+  - secretkey1
+
+targets:
+  target1:
+    type: slack
+    hook_url: https://hooks.slack.com/services/<...>
+
+channels:
+  channel1:
+    targets:
+      - target1
