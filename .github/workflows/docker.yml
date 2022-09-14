@@ -7,7 +7,7 @@ on:
     - cron: '0 7 */2 * *'
 
 env:
-  IMAGE_NAME: ghcr.io/chaoran-chen/napis
+  IMAGE_NAME: ghcr.io/chaoran-chen/napi
 
 jobs:
   docker:
